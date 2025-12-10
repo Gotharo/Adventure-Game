@@ -1,7 +1,32 @@
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     background: #222;
     color: #fff;
+}
+
+#output {
+    font-size: 18px;
+    text-align: center;
+}
+
+.joystick {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100px;
+    height: 100px;
+    background: rgba(216, 31, 31, 0.1);
+    border-radius: 50%;
+}
+
+#locationImage {
+    width: 300px;
+    height: 267px;
 }
