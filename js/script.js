@@ -17,12 +17,20 @@ let buttonWest = document.getElementById("west");
 let buttonEast = document.getElementById("east");
 
 let locationImage = document.getElementById("locationImage");
+let locationItemImage = document.getElementById("locationItemImage");
 
 buttonNorth.addEventListener("click", clickHandler, false);
 buttonSouth.addEventListener("click", clickHandler, false);
 buttonWest.addEventListener("click", clickHandler, false);
 buttonEast.addEventListener("click", clickHandler, false);
 
+let items = ["flute", "stone", "sword"];
+let itemsLocations = [0, 5, 8];
+
+let itemsImages = [];
+        itemsImages[0] = "flute.png";
+        itemsImages[1] = "stone.png";
+        itemsImages[2] = "sword.png";
 
 render();
 
@@ -97,8 +105,21 @@ function playGame(event) {
 }
 
 
+ 
 function render() {
     output.innerHTML = map[mapLocation];
     locationImage.src = `./assets/img/${images[mapLocation]}`;
+    locationItemImage.src = ``;
+
+    for (let i = 0; i < items.length; i++) {
+
+        if (itemsLocations[i] === mapLocation) {
+            output.innerHTML += "<br>You see a " + items[i] + " here.";
+            console.log(items[i]);
+        }
+        
+        
     output.innerHTML += "<br><em>" + gameMessage + "</em>";
+}
+
 }
