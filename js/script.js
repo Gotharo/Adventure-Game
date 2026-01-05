@@ -109,17 +109,30 @@ function playGame(event) {
 function render() {
     output.innerHTML = map[mapLocation];
     locationImage.src = `./assets/img/${images[mapLocation]}`;
-    locationItemImage.src = ``;
-
+    locationItemImage.style.display = "none";
+    
     for (let i = 0; i < items.length; i++) {
-
+        
         if (itemsLocations[i] === mapLocation) {
             output.innerHTML += "<br>You see a " + items[i] + " here.";
+            locationItemImage.style.display = "block";
             console.log(items[i]);
-        }
+            
+            switch (items[i]) {
+                case "flute":
+                    locationItemImage.src = `./assets/img/${itemsImages[0]}`;
+                    break;
+                case "stone":
+                    locationItemImage.src = `./assets/img/${itemsImages[1]}`;
+                    break;
+                case "sword":
+                    locationItemImage.src = `./assets/img/${itemsImages[2]}`;
+                    break;
+            }
+        } 
         
         
+    }
     output.innerHTML += "<br><em>" + gameMessage + "</em>";
-}
 
 }
