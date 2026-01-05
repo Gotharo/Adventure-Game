@@ -1,4 +1,4 @@
-import { images, map } from "./arrays.js";
+import { images, map, blockedPathMessages } from "./arrays.js";
 
 
 let mapLocation = 4;
@@ -57,17 +57,39 @@ function playGame(event) {
     }
     switch (action) {
         case "north":
-            mapLocation -= 3;
+            if (mapLocation >= 3) {
+                mapLocation -= 3;
+            }
+            else {
+                gameMessage = blockedPathMessages[mapLocation];
+            }
             break;
         case "east":
-            mapLocation += 1;
+            if (mapLocation % 3 != 2) {
+                mapLocation += 1;
+            }
+            else {
+                gameMessage = blockedPathMessages[mapLocation];
+            }
             break;
         case "south":
-            mapLocation += 3;
+            if (mapLocation < 6) {
+                mapLocation += 3;
+            }
+            else {
+                gameMessage = blockedPathMessages[mapLocation];
+            }
             break;
         case "west":
-            mapLocation -= 1;
+            if (mapLocation % 3 != 0) {
+                mapLocation -= 1;
+            }
+            else {
+                gameMessage = blockedPathMessages[mapLocation];
+            }
             break;
+        default:
+            gameMessage = "I don't understand that.";
     }
 
     render();
