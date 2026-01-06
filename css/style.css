@@ -61,10 +61,16 @@ body {
     background-repeat: no-repeat;
     margin-right: 10px;
     position: relative;
+    cursor: pointer;
 
 }
 
 
+
+.slots:hover {
+    transform: scale(.75);
+    transition: transform 0.3s;
+}
 
 .items-actions {
     display: flex;

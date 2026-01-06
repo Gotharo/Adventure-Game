@@ -1,5 +1,5 @@
 import { images, map, blockedPathMessages } from "./arrays.js";
-import { takeItem } from "./items.js";
+import { takeItem, dropItem } from "./items.js";
 
 
 export let mapLocation = 4;
@@ -13,6 +13,9 @@ let actionIKnow = ["north", "south", "east", "west", "take", "use", "drop"];
 let action = "";
 
 export let backpack = [];
+
+
+
 
 let buttonNorth = document.getElementById("north");
 let buttonSouth = document.getElementById("south");
@@ -104,9 +107,9 @@ function playGame(event) {
         // case "use":
         //     useItem()
         //     break;
-        // case "drop":
-        //     dropItem()
-        //     break;
+        case "drop":
+            dropItem()
+            break;
         default:
             gameMessage = "I don't understand that.";
     }
