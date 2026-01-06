@@ -30,10 +30,9 @@ buttonEast.addEventListener("click", clickHandler, false);
 export let items = ["flute", "stone", "sword"];
 export let itemsLocations = [0, 5, 8];
 
-export let itemsImages = [];
-itemsImages[0] = "flute.png";
-itemsImages[1] = "stone.png";
-itemsImages[2] = "sword.png";
+
+export let itemsImages = ["flute.png", "stone.png", "sword.png"];
+
 
 
 
@@ -134,7 +133,6 @@ export function render() {
         if (itemsLocations[i] === mapLocation) {
             locationItemImage.style.display = "block";
             output.innerHTML += "<br>You see a " + items[i] + " here.";
-            console.log(items[i]);
 
             locationItemImage.src = `./assets/img/${itemsImages[i]}`;
         }
