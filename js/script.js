@@ -30,10 +30,12 @@ buttonEast.addEventListener("click", clickHandler, false);
 export let items = ["flute", "stone", "sword"];
 export let itemsLocations = [0, 5, 8];
 
-let itemsImages = [];
-        itemsImages[0] = "flute.png";
-        itemsImages[1] = "stone.png";
-        itemsImages[2] = "sword.png";
+export let itemsImages = [];
+itemsImages[0] = "flute.png";
+itemsImages[1] = "stone.png";
+itemsImages[2] = "sword.png";
+
+
 
 render();
 
@@ -118,25 +120,26 @@ function playGame(event) {
 }
 
 
- 
-function render() {
-    output.innerHTML = map[mapLocation];
-    locationImage.src = `./assets/img/${images[mapLocation]}`;
+
+export function render() {
     locationItemImage.style.display = "none";
+    output.innerHTML = map[mapLocation];
+
+    locationImage.src = `./assets/img/${images[mapLocation]}`;
 
     locationItemImage.addEventListener("click", takeItem);
-    
+
     for (let i = 0; i < items.length; i++) {
-        
+
         if (itemsLocations[i] === mapLocation) {
-            output.innerHTML += "<br>You see a " + items[i] + " here.";
             locationItemImage.style.display = "block";
+            output.innerHTML += "<br>You see a " + items[i] + " here.";
             console.log(items[i]);
-            
+
             locationItemImage.src = `./assets/img/${itemsImages[i]}`;
-        } 
-        
-        
+        }
+
+
     }
     output.innerHTML += "<br><em>" + gameMessage + "</em>";
 

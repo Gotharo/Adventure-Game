@@ -39,7 +39,6 @@ body {
     position: absolute;
     top: 150px;
     left: 125px;
-    display: none;
 }
 
 .ui {
@@ -54,10 +53,9 @@ body {
     justify-content: center;
 }
 
-.slots-01 {
+.slots {
     height: 50px;
     width: 50px;
-    background-image: url("../assets/img/flute.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -66,27 +64,7 @@ body {
 
 }
 
-.slots-02 {
-    height: 50px;
-    width: 50px;
-    background-image: url("../assets/img/stone.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
 
-}
-
-.slots-03 {
-    height: 50px;
-    width: 50px;
-    background-image: url("../assets/img/sword.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-left: 10px;
-    position: relative;
-}
 
 .items-actions {
     display: flex;
