@@ -1,31 +1,36 @@
-import { items, mapLocation, itemsLocations, backpack, render, itemsImages } from "./script.js";
+import { items, mapLocation, backpack, render } from "./script.js";
 
 
 export function takeItem() {
-    let itemIndex = itemsLocations.findIndex(index => index === mapLocation);
-    const uiDiv = document.getElementById("ui");
+    let itemIndex = items.findIndex(item => item.location === mapLocation);
+
 
     if (itemIndex !== -1) {
-        let itemName = items[itemIndex];
-        console.log(itemName);
-        backpack.push(itemName);
+        backpack.push(items[itemIndex].name);
         items.splice(itemIndex, 1);
-        itemsLocations.splice(itemIndex, 1);
-        
-        
-        
-        uiDiv.innerHTML += `<div class="slots" style="background-image: url('./assets/img/${itemsImages[itemIndex]}');"></div>`;
-        
-        console.log(itemName, itemIndex);
+        locationItemImage.style.display = "none";
+
+        console.log(itemIndex);
         console.log(backpack);
         console.log(items);
-        console.log(itemsLocations);
-        console.log(itemsImages);
+        console.log(mapLocation);
         render();
+        renderBackpack();
     }
 
 }
 
 
+export function renderBackpack() {
+    let uiDiv = document.getElementById("ui");
+    uiDiv.innerHTML = "";
+    for (let packs of backpack) {
 
+        console.log(packs);
+        uiDiv.innerHTML += `<div class="slots" style="background-image: url('./assets/img/${packs}.png');"></div>`;
+    }
+
+
+
+}
 

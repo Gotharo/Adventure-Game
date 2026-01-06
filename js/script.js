@@ -27,14 +27,11 @@ buttonSouth.addEventListener("click", clickHandler, false);
 buttonWest.addEventListener("click", clickHandler, false);
 buttonEast.addEventListener("click", clickHandler, false);
 
-export let items = ["flute", "stone", "sword"];
-export let itemsLocations = [0, 5, 8];
-
-
-export let itemsImages = ["flute.png", "stone.png", "sword.png"];
-
-
-
+export let items = [
+    { name: "flute", location: 0, image: "flute.png" },
+    { name: "stone", location: 5, image: "stone.png" },
+    { name: "sword", location: 8, image: "sword.png" }
+];
 
 render();
 
@@ -128,16 +125,12 @@ export function render() {
 
     locationItemImage.addEventListener("click", takeItem);
 
-    for (let i = 0; i < items.length; i++) {
-
-        if (itemsLocations[i] === mapLocation) {
+    for (let item of items) {
+        if (item.location === mapLocation) {
             locationItemImage.style.display = "block";
-            output.innerHTML += "<br>You see a " + items[i] + " here.";
-
-            locationItemImage.src = `./assets/img/${itemsImages[i]}`;
+            locationItemImage.src = `./assets/img/${item.image}`;
+            output.innerHTML += "<br>You see a " + item.name + " here.";
         }
-
-
     }
     output.innerHTML += "<br><em>" + gameMessage + "</em>";
 
