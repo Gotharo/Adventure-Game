@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
     margin: 30px;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -19,7 +20,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    position: absolute;
+    top: 425px;
     width: 100px;
     height: 100px;
     background: rgba(216, 31, 31, 0.1);
@@ -94,6 +96,15 @@ body {
     top: -17px;
     left: -9px;
 
+}
+
+.item-image {
+    cursor: pointer;
+}
+
+.item-image:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
 }
 
 .btn-actions {

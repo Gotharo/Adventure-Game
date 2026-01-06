@@ -1,15 +1,18 @@
 import { images, map, blockedPathMessages } from "./arrays.js";
+import { takeItem } from "./items.js";
 
 
-let mapLocation = 4;
+export let mapLocation = 4;
 
 let output = document.getElementById("output");
 output.innerHTML = map[mapLocation];
 
-let gameMessage = "";
+export let gameMessage = "";
 
-let actionIKnow = ["north", "south", "east", "west"];
+let actionIKnow = ["north", "south", "east", "west", "take", "use", "drop"];
 let action = "";
+
+export let backpack = [];
 
 let buttonNorth = document.getElementById("north");
 let buttonSouth = document.getElementById("south");
@@ -24,8 +27,8 @@ buttonSouth.addEventListener("click", clickHandler, false);
 buttonWest.addEventListener("click", clickHandler, false);
 buttonEast.addEventListener("click", clickHandler, false);
 
-let items = ["flute", "stone", "sword"];
-let itemsLocations = [0, 5, 8];
+export let items = ["flute", "stone", "sword"];
+export let itemsLocations = [0, 5, 8];
 
 let itemsImages = [];
         itemsImages[0] = "flute.png";
@@ -96,6 +99,16 @@ function playGame(event) {
                 gameMessage = blockedPathMessages[mapLocation];
             }
             break;
+
+        case "take":
+            takeItem()
+            break;
+        // case "use":
+        //     useItem()
+        //     break;
+        // case "drop":
+        //     dropItem()
+        //     break;
         default:
             gameMessage = "I don't understand that.";
     }
@@ -110,6 +123,8 @@ function render() {
     output.innerHTML = map[mapLocation];
     locationImage.src = `./assets/img/${images[mapLocation]}`;
     locationItemImage.style.display = "none";
+
+    locationItemImage.addEventListener("click", takeItem);
     
     for (let i = 0; i < items.length; i++) {
         
@@ -118,17 +133,7 @@ function render() {
             locationItemImage.style.display = "block";
             console.log(items[i]);
             
-            switch (items[i]) {
-                case "flute":
-                    locationItemImage.src = `./assets/img/${itemsImages[0]}`;
-                    break;
-                case "stone":
-                    locationItemImage.src = `./assets/img/${itemsImages[1]}`;
-                    break;
-                case "sword":
-                    locationItemImage.src = `./assets/img/${itemsImages[2]}`;
-                    break;
-            }
+            locationItemImage.src = `./assets/img/${itemsImages[i]}`;
         } 
         
         
