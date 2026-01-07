@@ -16,24 +16,18 @@ export function takeItem() {
 
 }
 
-export function dropItem() {
-    for (let itemsInBackpack of backpack) {
-        items.push({ 
-            name: itemsInBackpack, 
-            location: mapLocation, 
-            image: `${itemsInBackpack}.png` 
+export function dropItem(itemName) {
+    const index = backpack.indexOf(itemName);
+    if (index !== -1) {
+        items.push({
+            name: itemName,
+            location: mapLocation,
+            image: `${itemName}.png`
         });
-        backpack.splice(backpack.indexOf(itemsInBackpack), 1);
+        backpack.splice(index, 1);
         render();
         renderBackpack();
-        break;
     }
-
-
-    // let droppedItem = backpack.pop();
-    // items.push({ name: droppedItem, location: mapLocation });
-    // render();
-    // renderBackpack();
 }
 
 
@@ -46,7 +40,11 @@ export function renderBackpack() {
         console.log(backpack);
         console.log(items);
         console.log(packs);
-        uiDiv.innerHTML += `<div class="slots" style="background-image: url('./assets/img/${packs}.png');"></div>`;
+        let slotDiv = document.createElement("div");
+        slotDiv.className = "slots";
+        slotDiv.style.backgroundImage = `url('./assets/img/${packs}.png')`;
+        slotDiv.addEventListener("click", () => dropItem(packs));
+        uiDiv.appendChild(slotDiv);
 
 
     }
