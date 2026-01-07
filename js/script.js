@@ -23,7 +23,10 @@ let buttonWest = document.getElementById("west");
 let buttonEast = document.getElementById("east");
 
 let locationImage = document.getElementById("locationImage");
-let locationItemImage = document.getElementById("locationItemImage");
+// ...eliminado: locationItemImage ya no se usa...
+
+let itemImageParent = document.querySelector('.item-image-parent');
+
 
 buttonNorth.addEventListener("click", clickHandler, false);
 buttonSouth.addEventListener("click", clickHandler, false);
@@ -121,20 +124,21 @@ function playGame(event) {
 
 
 export function render() {
-    locationItemImage.style.display = "none";
     output.innerHTML = map[mapLocation];
-
     locationImage.src = `./assets/img/${images[mapLocation]}`;
+    itemImageParent.innerHTML = "";
 
-    locationItemImage.addEventListener("click", takeItem);
+    let itemsHere = items.filter(item => item.location === mapLocation);
 
-    for (let item of items) {
-        if (item.location === mapLocation) {
-            locationItemImage.style.display = "block";
-            locationItemImage.src = `./assets/img/${item.image}`;
-            output.innerHTML += "<br>You see a " + item.name + " here.";
-        }
+    for (let item of itemsHere) {
+        let img = document.createElement("img");
+        img.className = "item-image";
+        img.src = `./assets/img/${item.image}`;
+        img.alt = item.name;
+        img.addEventListener("click", () => takeItem(item));
+        itemImageParent.appendChild(img);
+        output.innerHTML += "<br>You see a " + item.name + " here.";
     }
+    
     output.innerHTML += "<br><em>" + gameMessage + "</em>";
-
 }

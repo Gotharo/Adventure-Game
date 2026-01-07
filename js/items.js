@@ -8,7 +8,7 @@ export function takeItem() {
     if (itemIndex !== -1) {
         backpack.push(items[itemIndex].name);
         items.splice(itemIndex, 1);
-        locationItemImage.style.display = "none";
+        // ...eliminado: locationItemImage ya no se usa...
 
         render();
         renderBackpack();
@@ -16,9 +16,8 @@ export function takeItem() {
 
 }
 
-export function dropItem(event) {
+export function dropItem() {
     for (let itemsInBackpack of backpack) {
-        console.log(`se a clockeado ${itemsInBackpack.name}`);
         items.push({ 
             name: itemsInBackpack, 
             location: mapLocation, 
